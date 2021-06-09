@@ -1,7 +1,7 @@
-import mcdm
-import graphrank
+from Problem3 import mcdm
+from Problem3.graphrank import *
 
-if __name__ == '__main__':
+def prob3():
     distance = {'City-Link Express': 30, 'DHL': 80, 'GDEX': 55, 'J&T': 63, 'Pos Laju': 70}
     semantic = {'City-Link Express': 8.5, 'DHL': 6.4, 'GDEX': 9.3, 'J&T': 1.87, 'Pos Laju': 4.86}
     # lists from dict for mcdm
@@ -15,4 +15,4 @@ if __name__ == '__main__':
     mcdm_dict = dict(zip(courier_company, mcdm_list))
     print("multi criteria decision making result: ", mcdm_dict)
     # plot graph for most to least recommended ranking
-    graphrank.plot_graph_rank(mcdm_dict)
+    return graphrank.plot_graph_rank(mcdm_dict)

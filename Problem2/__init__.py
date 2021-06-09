@@ -1,11 +1,11 @@
-import countposnegneut
-import countwordstop
-import graphs
-import senti_conclusion
-import stopword
-import trie
+from Problem2 import countposnegneut
+from Problem2 import countwordstop
+from Problem2 import graphs
+from Problem2 import senti_conclusion
+from Problem2 import stopword
+from Problem2 import trie
 
-if __name__ == '__main__':
+def prob2():
     file_list = [["citylink1", "citylink2", "citylink3"], ["DHL1", "DHL2", "DHL3"], ["GDEX1", "GDEX2", "GDEX3"],
                  ["J&T1", "J&T2", "J&T3"], ["poslaju1", "poslaju2", "poslaju3"]]
     total_words_arr = []  # total word count of all articles for each courier company
@@ -49,6 +49,6 @@ if __name__ == '__main__':
                               neutral_sentiment, sentiratio)
 
     # plot and display graphs
-    graphs.plotGraphs(courier_company, total_words_arr, total_stop_words_arr,
+    return graphs.plotGraphs(courier_company, total_words_arr, total_stop_words_arr,
                       total_positive_words_arr, total_negative_words_arr, total_neutral_words_arr,
                       positive_sentiment, negative_sentiment, neutral_sentiment)

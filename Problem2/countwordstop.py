@@ -1,7 +1,6 @@
-import cleanfile
-import countwords
-import stopword
-
+from Problem2 import cleanfile
+from Problem2 import countwords
+from Problem2 import stopword
 
 # to count the total word count and total stop words of all articles for each courier company
 def count_and_stop(file_list, total_words_arr, total_stop_words_arr, stop_trie):

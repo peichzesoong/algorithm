@@ -3,7 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 
-import senti_conclusion
+from Problem2 import senti_conclusion
 
 
 # plotting both graphs (word count & stop word) and (positive, negative, neutral words)
@@ -30,7 +30,7 @@ def plotGraphs(courier_company, total_words_arr, total_stop_words_arr, total_pos
     neutralsentiment = go.Bar(name='Neutral Sentiment', x=list(positive_sentiment.keys()),
                               y=list(neutral_sentiment.values()))
 
-    app.layout = html.Div(children=[
+    return html.Div(children=[
         html.Div([
             html.Div()
         ]),
@@ -98,4 +98,3 @@ def plotGraphs(courier_company, total_words_arr, total_stop_words_arr, total_pos
 
     ])
 
-    app.run_server(debug=True)

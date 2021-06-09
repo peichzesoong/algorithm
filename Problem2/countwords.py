@@ -1,6 +1,6 @@
 # to count the num of words in the file
 def count_words(file_name):
-    file = open("texts/" + file_name + ".txt", "r", encoding="utf8")
+    file = open("Problem2/texts/" + file_name + ".txt", "r", encoding="utf8")
     cfile = file.readlines()
     wordcount = 0
     for line in cfile:
