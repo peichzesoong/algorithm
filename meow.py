@@ -14,6 +14,8 @@ app.layout = html.Div([
     # represents the URL bar, doesn't render anything
     dcc.Location(id='url', refresh=False),
 
+    html.A('Navigate to Problem 1', href='http://algoprojq1.herokuapp.com/'),
+    html.Br(),
     dcc.Link('Navigate to Problem 2', href='/dash/problem2'),
     html.Br(),
     dcc.Link('Navigate to Problem 3', href='/dash/problem3'),
@@ -26,6 +28,8 @@ app.layout = html.Div([
               [dash.dependencies.Input('url', 'pathname')])
 def display_page(pathname):
     pathname = pathname.split('/')
+    if len(pathname) < 3:
+        return "Hellooo"
     if pathname[2] == "problem2":
         return prob2()
     elif pathname[2] == "problem3":
