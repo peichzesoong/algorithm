@@ -14,7 +14,12 @@ def dist_adapter(resp):
 def prob3():
     r = requests.get('http://algoprojq1.herokuapp.com/api/distance/1')  
     distance = dist_adapter(r) or {'City-Link Express': 30, 'DHL': 80, 'GDEX': 55, 'J&T': 63, 'Pos Laju': 70}
-    semantic = {'City-Link Express': 8.5, 'DHL': 6.4, 'GDEX': 9.3, 'J&T': 1.87, 'Pos Laju': 4.86}
+    try:
+        from Problem2 import prob2
+        semantic = prob2(gimme_senti=True)
+    except:
+        semantic = {'City-Link Express': 8.5, 'DHL': 6.4, 'GDEX': 9.3, 'J&T': 1.87, 'Pos Laju': 4.86}
+        
     # lists from dict for mcdm
     courier_company = list(semantic.keys())
     distance_list = list(distance.values())

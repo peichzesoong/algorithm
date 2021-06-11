@@ -5,7 +5,7 @@ from Problem2 import senti_conclusion
 from Problem2 import stopword
 from Problem2 import trie
 
-def prob2():
+def prob2(gimme_senti=False):
     file_list = [["citylink1", "citylink2", "citylink3"], ["DHL1", "DHL2", "DHL3"], ["GDEX1", "GDEX2", "GDEX3"],
                  ["J&T1", "J&T2", "J&T3"], ["poslaju1", "poslaju2", "poslaju3"]]
     total_words_arr = []  # total word count of all articles for each courier company
@@ -47,6 +47,9 @@ def prob2():
     senti_conclusion.conclude(courier_company, total_positive_words_arr, total_negative_words_arr,
                               total_neutral_words_arr, positive_sentiment, negative_sentiment,
                               neutral_sentiment, sentiratio)
+
+    if gimme_senti:
+        return sentiratio
 
     # plot and display graphs
     return graphs.plotGraphs(courier_company, total_words_arr, total_stop_words_arr,
