@@ -1,8 +1,19 @@
 from Problem3 import mcdm
 from Problem3.graphrank import *
+import requests
+
+# {'id': 1, 'distanceCityLink': 73.15100000000001, 'distancePosLaju': 39.28, 'distanceGdex': 76.682, 'distanceJnT': 66.071, 'distanceDHL': 58.685, 'shortestDistance': 'Pos Laju', 'distanceShortest': 39.28, 'customer': 1}
+
+def dist_adapter(resp):
+    if resp.status_code != 200:
+        print("Nothing fishy here...")
+        return None
+    raw = resp.json()
+    return {'City-Link Express': raw['distanceCityLink'], 'DHL': raw['distanceDHL'], 'GDEX': raw['distanceGdex'], 'J&T': raw['distanceJnT'], 'Pos Laju': raw['distancePosLaju']}
 
 def prob3():
-    distance = {'City-Link Express': 30, 'DHL': 80, 'GDEX': 55, 'J&T': 63, 'Pos Laju': 70}
+    r = requests.get('http://algoprojq1.herokuapp.com/api/distance/1')  
+    distance = dist_adapter(r) or {'City-Link Express': 30, 'DHL': 80, 'GDEX': 55, 'J&T': 63, 'Pos Laju': 70}
     semantic = {'City-Link Express': 8.5, 'DHL': 6.4, 'GDEX': 9.3, 'J&T': 1.87, 'Pos Laju': 4.86}
     # lists from dict for mcdm
     courier_company = list(semantic.keys())
